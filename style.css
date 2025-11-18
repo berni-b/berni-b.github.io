@@ -10,10 +10,8 @@ body {
   grid-template-columns: repeat(5, 60px);
   grid-template-rows: repeat(5, 60px);
   gap: 15px;
-  background: white;
-  padding: 30px;
-  border-radius: 16px;
-  box-shadow: 0 8px 32px rgba(60,60,60,0.08);
+  padding: 10px;
+  border-radius: 0px;
 }
 .cell {
   display: flex;
@@ -21,8 +19,8 @@ body {
   align-items: center;
 }
 .circle {
-  width: 36px;
-  height: 36px;
+  width: 56px;
+  height: 56px;
   border-radius: 50%;
   transition: background 0.3s;
     }
