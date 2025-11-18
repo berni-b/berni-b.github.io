@@ -1,0 +1,28 @@
+body {
+  background: #f6f6f6;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.grid {
+  display: grid;
+  grid-template-columns: repeat(5, 60px);
+  grid-template-rows: repeat(5, 60px);
+  gap: 15px;
+  background: white;
+  padding: 30px;
+  border-radius: 16px;
+  box-shadow: 0 8px 32px rgba(60,60,60,0.08);
+}
+.cell {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.circle {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  transition: background 0.3s;
+    }
