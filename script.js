@@ -1,11 +1,25 @@
 const gridSize = 5;
 const grid = document.getElementById('grid');
+const footerLabel = document.getElementById('footer-label');
 
-const redIndex = Math.floor(Math.random() * gridSize * gridSize);
-let yellowIndex;
-do {
-  yellowIndex = Math.floor(Math.random() * gridSize * gridSize);
-} while (yellowIndex === redIndex);
+const totalCells = gridSize * gridSize;
+
+function pickDistinctIndices(count) {
+  const indices = [];
+  while (indices.length < count) {
+    const idx = Math.floor(Math.random() * totalCells);
+    if (!indices.includes(idx)) indices.push(idx);
+  }
+  return indices;
+}
+
+const [redIndex, yellowIndex, blueIndex] = pickDistinctIndices(3);
+
+const circles = [
+  { index: redIndex, className: 'circle', href: 'https://github.com/berni-b/', target: '_blank', label: 'GitHub', color: '#e04545' },
+  { index: yellowIndex, className: 'circle yellow', href: 'blog/index.html', target: null, label: 'Blog', color: '#FFD300' },
+  { index: blueIndex, className: 'circle blue', href: 'https://www.linkedin.com/in/bastian-b-817037156/', target: '_blank', label: 'LinkedIn', color: '#0A66C2' },
+];
 
 function interpolateColor(color1, color2, factor) {
   return color1.map((c, i) => Math.round(c + (color2[i] - c) * factor));
@@ -21,20 +35,24 @@ for (let i = 0; i < gridSize; i++) {
     cell.className = 'cell';
 
     const delay = (i + j) * 60;
+    const coloredCircle = circles.find(c => c.index === idx);
 
-    if (idx === redIndex) {
+    if (coloredCircle) {
       const circleLink = document.createElement('a');
-      circleLink.className = 'circle';
-      circleLink.href = 'https://github.com/berni-b/';
-      circleLink.target = '_blank';
-      circleLink.rel = 'noopener';
+      circleLink.className = coloredCircle.className;
+      circleLink.href = coloredCircle.href;
+      if (coloredCircle.target) {
+        circleLink.target = coloredCircle.target;
+        circleLink.rel = 'noopener';
+      }
       circleLink.style.animationDelay = `${delay}ms`;
-      cell.appendChild(circleLink);
-    } else if (idx === yellowIndex) {
-      const circleLink = document.createElement('a');
-      circleLink.className = 'circle yellow';
-      circleLink.href = 'blog/index.html';
-      circleLink.style.animationDelay = `${delay}ms`;
+      circleLink.addEventListener('mouseenter', () => {
+        footerLabel.textContent = coloredCircle.label;
+        footerLabel.style.color = coloredCircle.color;
+      });
+      circleLink.addEventListener('mouseleave', () => {
+        footerLabel.textContent = '';
+      });
       cell.appendChild(circleLink);
     } else {
       const circle = document.createElement('div');
