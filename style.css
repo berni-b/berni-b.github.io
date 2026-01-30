@@ -38,11 +38,21 @@ body {
   width: 56px;
   height: 56px;
   border-radius: 50%;
-  transition: background 0.3s;
+  transition: filter 0.3s;
   display: inline-block;
   background: #e04545;
   text-decoration: none;
   color: inherit;
+  opacity: 0;
+  transform: scale(0);
+  animation: pop-in 0.4s ease forwards;
+}
+
+@keyframes pop-in {
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
 }
 
 a.circle:hover {
@@ -56,11 +66,11 @@ a.circle:hover {
 .red-link:visited {
   color: #e04545;
   text-decoration: none;
-  transition: color 0.3s;
+  transition: filter 0.3s;
 }
 
 .red-link:hover {
-  color: #d12a2a;
+  filter: brightness(0.85);
   cursor: pointer;
 }
 
