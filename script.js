@@ -2,6 +2,10 @@ const gridSize = 5;
 const grid = document.getElementById('grid');
 
 const redIndex = Math.floor(Math.random() * gridSize * gridSize);
+let yellowIndex;
+do {
+  yellowIndex = Math.floor(Math.random() * gridSize * gridSize);
+} while (yellowIndex === redIndex);
 
 function interpolateColor(color1, color2, factor) {
   return color1.map((c, i) => Math.round(c + (color2[i] - c) * factor));
@@ -24,6 +28,12 @@ for (let i = 0; i < gridSize; i++) {
       circleLink.href = 'https://github.com/berni-b/';
       circleLink.target = '_blank';
       circleLink.rel = 'noopener';
+      circleLink.style.animationDelay = `${delay}ms`;
+      cell.appendChild(circleLink);
+    } else if (idx === yellowIndex) {
+      const circleLink = document.createElement('a');
+      circleLink.className = 'circle yellow';
+      circleLink.href = 'blog/index.html';
       circleLink.style.animationDelay = `${delay}ms`;
       cell.appendChild(circleLink);
     } else {
