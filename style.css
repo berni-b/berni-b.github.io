@@ -20,6 +20,15 @@ body {
   text-align: center;
 }
 
+.subtitle {
+  font-size: 16px;
+  font-weight: normal;
+  color: #888;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  margin-top: 4px;
+}
+
 /* Grid */
 .grid {
   display: grid;
@@ -59,6 +68,42 @@ a.circle:hover {
   filter: brightness(0.85);
   cursor: pointer;
   text-decoration: none;
+}
+
+/* Summary */
+.summary {
+  text-align: center;
+  margin-top: 4px;
+  margin-bottom: 8px;
+}
+
+.summary p {
+  font-family: "Helvetica", "Trebuchet MS", "Verdana", sans-serif;
+  font-size: 15px;
+  color: #888;
+  letter-spacing: 0.05em;
+  margin: 4px 0;
+  line-height: 1.4;
+}
+
+/* Bottom nav */
+.bottom-nav {
+  margin-top: 20px;
+  display: flex;
+  gap: 20px;
+}
+
+.bottom-nav a,
+.bottom-nav a:visited {
+  font-family: "Helvetica", "Trebuchet MS", "Verdana", sans-serif;
+  font-size: 14px;
+  color: #888;
+  text-decoration: none;
+  transition: color 0.3s;
+}
+
+.bottom-nav a:hover {
+  color: #222;
 }
 
 /* Footer label */
@@ -219,5 +264,13 @@ a.circle:hover {
   .circle {
     width: 36px;
     height: 36px;
+  }
+
+  .subtitle {
+    font-size: 13px;
+  }
+
+  .summary p {
+    font-size: 13px;
   }
 }
