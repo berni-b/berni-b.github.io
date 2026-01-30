@@ -61,22 +61,23 @@ a.circle:hover {
   text-decoration: none;
 }
 
-/* Links */
-.red-link,
-.red-link:visited {
-  color: #e04545;
-  text-decoration: none;
-  transition: filter 0.3s;
+/* Footer label */
+.footer {
+  min-height: 1lh;
 }
 
-.red-link:hover {
-  filter: brightness(0.85);
-  cursor: pointer;
+#footer-label {
+  transition: color 0.3s;
 }
 
 /* Yellow dot */
 .circle.yellow {
   background: #FFD300;
+}
+
+/* Blue dot */
+.circle.blue {
+  background: #0A66C2;
 }
 
 /* Blog layout */
