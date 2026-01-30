@@ -1,10 +1,8 @@
 const gridSize = 5;
 const grid = document.getElementById('grid');
 
-// Pick a random cell to be red
 const redIndex = Math.floor(Math.random() * gridSize * gridSize);
 
-// Helper to interpolate between two colors
 function interpolateColor(color1, color2, factor) {
   return color1.map((c, i) => Math.round(c + (color2[i] - c) * factor));
 }
@@ -18,18 +16,16 @@ for (let i = 0; i < gridSize; i++) {
     const cell = document.createElement('div');
     cell.className = 'cell';
 
-    // If this is the red dot, use <a>
     if (idx === redIndex) {
       const circleLink = document.createElement('a');
       circleLink.className = 'circle';
       circleLink.href = 'https://github.com/berni-b/';
-      circleLink.taget = '_blank';  
-      circleLink.style.background = 'red';
+      circleLink.target = '_blank';
+      circleLink.rel = 'noopener';
       cell.appendChild(circleLink);
     } else {
       const circle = document.createElement('div');
       circle.className = 'circle';
-      // Fade: diagonal from top-left to bottom-right
       const fade = (i + j) / (2 * (gridSize - 1));
       const rgb = interpolateColor(light, dark, fade);
       circle.style.background = `rgb(${rgb[0]},${rgb[1]},${rgb[2]})`;
