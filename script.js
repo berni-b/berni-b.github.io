@@ -16,12 +16,15 @@ for (let i = 0; i < gridSize; i++) {
     const cell = document.createElement('div');
     cell.className = 'cell';
 
+    const delay = (i + j) * 60;
+
     if (idx === redIndex) {
       const circleLink = document.createElement('a');
       circleLink.className = 'circle';
       circleLink.href = 'https://github.com/berni-b/';
       circleLink.target = '_blank';
       circleLink.rel = 'noopener';
+      circleLink.style.animationDelay = `${delay}ms`;
       cell.appendChild(circleLink);
     } else {
       const circle = document.createElement('div');
@@ -29,6 +32,7 @@ for (let i = 0; i < gridSize; i++) {
       const fade = (i + j) / (2 * (gridSize - 1));
       const rgb = interpolateColor(light, dark, fade);
       circle.style.background = `rgb(${rgb[0]},${rgb[1]},${rgb[2]})`;
+      circle.style.animationDelay = `${delay}ms`;
       cell.appendChild(circle);
     }
 
