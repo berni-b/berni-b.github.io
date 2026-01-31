@@ -62,7 +62,7 @@ cat > "$INDEX" <<'HEADER'
       <ul class="post-list">
 HEADER
 
-for md in $(ls -r "$POSTS_DIR"/*.md 2>/dev/null); do
+for md in $(printf '%s\n' "$POSTS_DIR"/*.md | sort -r); do
   basename="$(basename "$md" .md)"
   date="${basename:0:10}"
   raw_title="${basename:11}"
